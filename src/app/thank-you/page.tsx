@@ -88,7 +88,7 @@ export default function ThankYou() {
               
               <div className="text-gray-300 space-y-6 text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto">
                 <p>
-                  <span className="text-white font-semibold">We're carefully reviewing each application</span> to ensure we bring together the right group of systems thinkers for Chicago's first intellectual salon.
+                  <span className="text-white font-semibold">We&apos;re carefully reviewing each application</span> to ensure we bring together the right group of systems thinkers for Chicago's first intellectual salon.
                 </p>
                 <p>
                   Once we have received sufficient interest and have identified the ideal venue for our first meeting, <span className="text-white font-semibold">you will be notified by email</span> with all the details including date, time, and location.
@@ -107,7 +107,7 @@ export default function ThankYou() {
                   Keep thinking deeply about the systemic problems that concern you most. Consider what solutions might actually work, beyond the surface-level fixes typically proposed.
                 </p>
                 <p>
-                  <span className="text-white font-semibold">You're joining a community of minds</span> committed to moving beyond complaints to actual understanding and collaborative solutions.
+                  <span className="text-white font-semibold">You&apos;re joining a community of minds</span> committed to moving beyond complaints to actual understanding and collaborative solutions.
                 </p>
               </div>
             </div>

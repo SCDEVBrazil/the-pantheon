@@ -466,7 +466,7 @@ export default function Questionnaire() {
                         
                         <div className="mb-6">
                           <label htmlFor="criticalThinking" className="block text-sm font-semibold text-gray-300 mb-2">
-                            Pick any major societal problem. In your view, what's the real reason it persists despite decades of efforts to solve it?
+                            Pick any major societal problem. In your view, what&apos;s the real reason it persists despite decades of efforts to solve it?
                           </label>
                           <textarea
                             id="criticalThinking"

@@ -83,7 +83,7 @@ export default function Home() {
                     You feel the weight of knowing that better is possible, while watching most people accept what is as what must be.
                   </p>
                   <p className="text-white font-semibold text-xl lg:text-2xl">
-                    If these words resonate in your soul - if you've been searching for others who see what you see and refuse to accept it as inevitable - then you may be exactly who we're&nbsp;looking&nbsp;for.
+                    If these words resonate in your soul - if you&apos;ve been searching for others who see what you see and refuse to accept it as inevitable - then you may be exactly who we&apos;re looking for.
                   </p>
                   <p className="text-white font-bold text-2xl lg:text-3xl">
                     This is an invitation to something unprecedented.
