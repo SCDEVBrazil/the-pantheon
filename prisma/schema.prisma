@@ -6,10 +6,154 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+// User authentication and profile
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Subscription information
+  subscriptionStatus String @default("free") // "free", "active", "cancelled", "past_due"
+  subscriptionId     String?
+  customerId         String?
+  
+  // Assessment and classification
+  assessmentScores   AssessmentScore[]
+  userClassification String @default("unclassified") // "ready", "developable", "general", "unclassified"
+  
+  // Social features
+  posts     Post[]
+  comments  Comment[]
+  likes     Like[]
+  
+  // Profile information
+  profile   UserProfile?
+  
+  @@map("users")
+}
+
+// Extended user profile information
+model UserProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  bio          String?
+  location     String?
+  website      String?
+  avatarUrl    String?
+  
+  // Privacy settings
+  isProfilePublic Boolean @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("user_profiles")
+}
+
+// Assessment scoring system for psychological profiling
+model AssessmentScore {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // The 7 assessment dimensions from the strategy document
+  criticalThinking    Int @default(0) // 0-100 score
+  systemSkepticism    Int @default(0)
+  emotionalResilience Int @default(0)
+  complexityTolerance Int @default(0)
+  truthSeeking        Int @default(0)
+  actionOrientation   Int @default(0)
+  humanistScore       Int @default(0)
+  
+  // Overall classification score
+  overallScore Int @default(0)
+  
+  // Assessment metadata
+  assessmentType String // "signup", "game", "interaction", etc.
+  notes          String?
+  
+  createdAt DateTime @default(now())
+  
+  @@map("assessment_scores")
+}
+
+// Social media posts
+model Post {
+  id        String   @id @default(cuid())
+  content   String
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  
+  // Post metadata
+  isPublic  Boolean  @default(true)
+  isPinned  Boolean  @default(false)
+  
+  // Engagement
+  comments  Comment[]
+  likes     Like[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("posts")
+}
+
+// Comments on posts
+model Comment {
+  id       String @id @default(cuid())
+  content  String
+  postId   String
+  post     Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("comments")
+}
+
+// Likes on posts
+model Like {
+  id     String @id @default(cuid())
+  postId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  
+  // Prevent duplicate likes
+  @@unique([postId, userId])
+  @@map("likes")
+}
+
+// Payment and subscription tracking
+model Payment {
+  id             String   @id @default(cuid())
+  userId         String
+  amount         Float    // Changed from Decimal to Float for SQLite
+  currency       String   @default("usd")
+  status         String   // "pending", "completed", "failed", "refunded"
+  stripePaymentId String?
+  
+  // Payment metadata
+  description    String?
+  receiptUrl     String?
+  
+  createdAt      DateTime @default(now())
+  
+  @@map("payments")
 }
