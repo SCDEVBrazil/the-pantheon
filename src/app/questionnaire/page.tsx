@@ -132,7 +132,7 @@ export default function Questionnaire() {
                   Imagine a world where suffering, disease, genocide, and poverty are nearly unheard of. Where people live together in genuine harmony.
                 </p>
                 <p>
-                  You've been led to believe such a world cannot exist. <span className="text-white font-bold">We have evidence to the contrary.</span> We have mapped the path forward.
+                  You have been led to believe such a world cannot exist. <span className="text-white font-bold">We have evidence to the contrary.</span> We have mapped the path forward.
                 </p>
               </div>
             </div>
@@ -466,7 +466,7 @@ export default function Questionnaire() {
                         
                         <div className="mb-6">
                           <label htmlFor="criticalThinking" className="block text-sm font-semibold text-gray-300 mb-2">
-                            Pick any major societal problem. In your view, what&apos;s the real reason it persists despite decades of efforts to solve it?
+                            Pick any major societal problem. In your view, what is the real reason it persists despite decades of efforts to solve it?
                           </label>
                           <textarea
                             id="criticalThinking"

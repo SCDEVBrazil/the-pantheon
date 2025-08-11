@@ -54,7 +54,7 @@ export default function Home() {
             <div className="text-center mb-20">
               <div className="mb-8">
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-none tracking-tight">
-                  JOIN CHICAGO'S FIRST
+                  JOIN THE CHICAGO FIRST
                   <br />
                   <span className="bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent">
                     INTELLECTUAL SALON
@@ -74,7 +74,7 @@ export default function Home() {
               <div className="text-center">
                 <div className="text-gray-300 space-y-8 text-xl lg:text-2xl leading-relaxed max-w-5xl mx-auto mb-12">
                   <p className="text-white font-semibold text-2xl lg:text-3xl">
-                    Something is deeply wrong with the world we've inherited.
+                    Something is deeply wrong with the world we have inherited.
                   </p>
                   <p>
                     You see the suffering that could be prevented. The problems that could be solved. The potential that remains locked away while systems designed to help us have become systems designed to exploit us.
@@ -83,7 +83,7 @@ export default function Home() {
                     You feel the weight of knowing that better is possible, while watching most people accept what is as what must be.
                   </p>
                   <p className="text-white font-semibold text-xl lg:text-2xl">
-                    If these words resonate in your soul - if you&apos;ve been searching for others who see what you see and refuse to accept it as inevitable - then you may be exactly who we&apos;re looking for.
+                    If these words resonate in your soul - if you have been searching for others who see what you see and refuse to accept it as inevitable - then you may be exactly who we are looking for.
                   </p>
                   <p className="text-white font-bold text-2xl lg:text-3xl">
                     This is an invitation to something unprecedented.
