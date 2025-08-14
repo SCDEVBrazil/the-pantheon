@@ -15,6 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Chicago Intellectual Salon | Pantheon",
   description: "Join Chicago's first intellectual salon for systems thinkers. Monthly meetings focused on rigorous analysis and collaborative solutions.",
+  icons: {
+    icon: [
+      {
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
+      }
+    ]
+  }
 };
 
 export default function RootLayout({

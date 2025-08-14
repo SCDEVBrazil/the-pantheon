@@ -78,18 +78,22 @@ export default function Questionnaire() {
       formDataForSubmission.append('_subject', `New Pantheon Application: ${formData.firstName} ${formData.lastName}`)
       
       // Submit to Formspree
-      await handleFormspreeSubmit(formDataForSubmission)
+      const result = await handleFormspreeSubmit(formDataForSubmission)
       
-      // Check if submission was successful
-      if (state.succeeded) {
-        // Redirect to thank you page
+      // Wait a moment for state to update, then redirect
+      setTimeout(() => {
         window.location.href = '/thank-you'
-      }
+      }, 1000)
     }
   }
 
   // Show success message if form was submitted successfully
   if (state.succeeded) {
+    // Automatically redirect after showing success message
+    setTimeout(() => {
+      window.location.href = '/thank-you'
+    }, 2000)
+    
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
