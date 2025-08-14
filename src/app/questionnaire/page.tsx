@@ -78,7 +78,7 @@ export default function Questionnaire() {
       formDataForSubmission.append('_subject', `New Pantheon Application: ${formData.firstName} ${formData.lastName}`)
       
       // Submit to Formspree
-      const result = await handleFormspreeSubmit(formDataForSubmission)
+      await handleFormspreeSubmit(formDataForSubmission)
       
       // Wait a moment for state to update, then redirect
       setTimeout(() => {
