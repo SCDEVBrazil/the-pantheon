@@ -521,7 +521,7 @@ export default function Questionnaire() {
                               aria-describedby="strengths-help"
                             />
                             <div id="strengths-help" className="text-xs text-gray-500 mt-1">
-                              We're looking for evidence of independent thinking and unique problem-solving abilities.
+                              We&apos;re looking for evidence of independent thinking and unique problem-solving abilities.
                             </div>
                           </div>
 
