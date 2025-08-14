@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { useForm } from '@formspree/react'
 
 export default function Questionnaire() {
   const [currentStep, setCurrentStep] = useState(1)
@@ -19,6 +20,9 @@ export default function Questionnaire() {
     worldChange: '',
     criticalThinking: ''
   })
+
+  // Formspree integration
+  const [state, handleFormspreeSubmit] = useForm("xkgzebvd")
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -55,16 +59,47 @@ export default function Questionnaire() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (validateStep(currentStep)) {
-      // Here you would normally send the form data to your backend
-      console.log('Form submitted:', formData)
+      // Create a FormData object with all the form fields
+      const formDataForSubmission = new FormData()
+      formDataForSubmission.append('firstName', formData.firstName)
+      formDataForSubmission.append('lastName', formData.lastName)
+      formDataForSubmission.append('email', formData.email)
+      formDataForSubmission.append('facebook', formData.facebook)
+      formDataForSubmission.append('instagram', formData.instagram)
+      formDataForSubmission.append('linkedin', formData.linkedin)
+      formDataForSubmission.append('resonance', formData.resonance)
+      formDataForSubmission.append('interests', formData.interests)
+      formDataForSubmission.append('strengths', formData.strengths)
+      formDataForSubmission.append('worldChange', formData.worldChange)
+      formDataForSubmission.append('criticalThinking', formData.criticalThinking)
+      formDataForSubmission.append('_subject', `New Pantheon Application: ${formData.firstName} ${formData.lastName}`)
       
-      // Redirect to thank you page
-      window.location.href = '/thank-you'
+      // Submit to Formspree
+      await handleFormspreeSubmit(formDataForSubmission)
+      
+      // Check if submission was successful
+      if (state.succeeded) {
+        // Redirect to thank you page
+        window.location.href = '/thank-you'
+      }
     }
   }
+
+  // Show success message if form was submitted successfully
+  if (state.succeeded) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Application Submitted!</h1>
+          <p className="text-xl text-gray-400 mb-8">Redirecting you to our thank you page...</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Animated Background */}
@@ -483,14 +518,16 @@ export default function Questionnaire() {
                         <div className="flex justify-center">
                           <button
                             type="submit"
-                            disabled={!validateStep(currentStep)}
+                            disabled={!validateStep(currentStep) || state.submitting}
                             className={`font-bold py-4 px-12 rounded-full transition-all duration-300 transform shadow-2xl border ${
-                              validateStep(currentStep)
+                              validateStep(currentStep) && !state.submitting
                                 ? 'bg-gradient-to-r from-gray-800 to-black text-white hover:from-gray-700 hover:to-gray-900 hover:scale-105 border-gray-700 cursor-pointer'
                                 : 'bg-gray-700 text-gray-500 border-gray-600 cursor-not-allowed'
                             }`}
                           >
-                            <span className="relative z-10">SUBMIT APPLICATION</span>
+                            <span className="relative z-10">
+                              {state.submitting ? 'SUBMITTING...' : 'SUBMIT APPLICATION'}
+                            </span>
                           </button>
                         </div>
                       </div>
