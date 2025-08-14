@@ -88,21 +88,8 @@ const nextConfig: NextConfig = {
           }
         ],
       }
-    ]
+    ];
   },
-  
-  // Experimental features for better performance
-  experimental: {
-    optimizeCss: true,
-  },
-  
-  // Bundle analyzer (uncomment to analyze bundle size)
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.resolve.fallback.fs = false;
-  //   }
-  //   return config;
-  // },
 };
 
 export default nextConfig;
