@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from '@formspree/react'
-import { Metadata } from 'next'
 
 // Note: Since this is a client component, metadata needs to be handled differently
 // This would normally go in a separate metadata file or parent layout
@@ -160,12 +159,12 @@ export default function Questionnaire() {
         <meta name="description" content="Apply for founding membership in Chicago's first intellectual salon for systems thinkers. Join 10-12 exceptional individuals in collaborative problem-solving and rigorous analysis." />
         <meta name="keywords" content="pantheon application, chicago intellectual salon application, founding member application, systems thinking assessment, intellectual community application, critical thinking evaluation" />
         <meta property="og:title" content="Apply for Founding Membership | Pantheon" />
-        <meta property="og:description" content="Apply for founding membership in Chicago's first intellectual salon for systems thinkers. Multi-step assessment for exceptional individuals." />
+        <meta property="og:description" content="Apply for founding membership in Chicago&apos;s first intellectual salon for systems thinkers. Multi-step assessment for exceptional individuals." />
         <meta property="og:url" content="https://www.thepantheon.club/questionnaire" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Apply for Founding Membership | Pantheon" />
-        <meta name="twitter:description" content="Apply for founding membership in Chicago's first intellectual salon for systems thinkers." />
+        <meta name="twitter:description" content="Apply for founding membership in Chicago&apos;s first intellectual salon for systems thinkers." />
         <link rel="canonical" href="https://www.thepantheon.club/questionnaire" />
       </head>
 
